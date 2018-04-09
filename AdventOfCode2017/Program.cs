@@ -70,6 +70,11 @@ namespace AdventOfCode2017
 //                Day14.Solve1Half("ljoxqyyw");
 //                Day14.Solve2Half("flqrgnkx");
 //                Day14.Solve2Half("ljoxqyyw");
+                
+                Day15.Solve1Half(65, 8921);
+                Day15.Solve1Half(883, 879);
+                Day15.Solve2Half(65, 8921);
+                Day15.Solve2Half(883, 879);
             }
             catch (Exception e)
             {
