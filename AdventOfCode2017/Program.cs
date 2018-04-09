@@ -71,10 +71,13 @@ namespace AdventOfCode2017
 //                Day14.Solve2Half("flqrgnkx");
 //                Day14.Solve2Half("ljoxqyyw");
                 
-                Day15.Solve1Half(65, 8921);
-                Day15.Solve1Half(883, 879);
-                Day15.Solve2Half(65, 8921);
-                Day15.Solve2Half(883, 879);
+//                Day15.Solve1Half(65, 8921);
+//                Day15.Solve1Half(883, 879);
+//                Day15.Solve2Half(65, 8921);
+//                Day15.Solve2Half(883, 879);
+                
+                Day16.Solve1Half(16, "../../data/d16.txt");
+                Day16.Solve2Half(16, "../../data/d16.txt");
             }
             catch (Exception e)
             {
