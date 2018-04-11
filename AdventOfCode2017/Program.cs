@@ -76,13 +76,19 @@ namespace AdventOfCode2017
 //                Day15.Solve2Half(65, 8921);
 //                Day15.Solve2Half(883, 879);
                 
-                Day16.Solve1Half(16, "../../data/d16.txt");
-                Day16.Solve2Half(16, "../../data/d16.txt");
+//                Day16.Solve1Half(16, "../../data/d16.txt");
+//                Day16.Solve2Half(16, "../../data/d16.txt");
+                
+                Day17.Solve1Half(3, 2017);
+                Day17.Solve1Half(369, 2017);
+                Day17.Solve2Half(369, 50000000);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
             }
+
+            Console.ReadKey();
         }
     }
 }
