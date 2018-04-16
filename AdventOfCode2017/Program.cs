@@ -88,15 +88,16 @@ namespace AdventOfCode2017
 //                Day18.Solve2Half("../../data/d18_h2_test.txt");
 //                Day18.Solve2Half("../../data/d18.txt");
                 
-                Day19.Solve1Half("../../data/d19.txt");
-                Day19.Solve2Half("../../data/d19.txt");
+//                Day19.Solve1Half("../../data/d19.txt");
+//                Day19.Solve2Half("../../data/d19.txt");
+                
+                Day20.Solve1Half("../../data/d20.txt");
+                Day20.Solve2Half("../../data/d20.txt");
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
             }
-
-            Console.ReadKey();
         }
     }
 }
