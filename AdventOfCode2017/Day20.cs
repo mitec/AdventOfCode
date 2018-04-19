@@ -17,15 +17,14 @@ namespace AdventOfCode2017
             
             var ps = new long[ls.Length, 9];
             
-            var rgx = new Regex(@"(-?\d+),(-?\d+),(-?\d+)");
+            var rgx = new Regex(@"(-?\d+)");
             
             for (int i = 0; i < ls.Length; i++)
             {
-                int j = -1;
-                foreach (Match m in rgx.Matches(ls[i]))
+                MatchCollection mc = rgx.Matches(ls[i]);
+                for (int j = 0; j < mc.Count; j++)
                 {
-                    var g = m.Groups;
-                    for (int k = 1; k < g.Count; k++) ps[i, ++j] = int.Parse(g[k].Value);
+                    ps[i, j] = int.Parse(mc[j].Value);
                 }
             }
 
@@ -72,17 +71,16 @@ namespace AdventOfCode2017
             
             var ps = new long[ls.Length, 10];
             
-            var rgx = new Regex(@"(-?\d+),(-?\d+),(-?\d+)");
+            var rgx = new Regex(@"(-?\d+)");
             
             for (int i = 0; i < ls.Length; i++)
             {
                 ps[i, 0] = i;
                 
-                int j = 0;
-                foreach (Match m in rgx.Matches(ls[i]))
+                MatchCollection mc = rgx.Matches(ls[i]);
+                for (int j = 0; j < mc.Count; j++)
                 {
-                    var g = m.Groups;
-                    for (int k = 1; k < g.Count; k++) ps[i, ++j] = int.Parse(g[k].Value);
+                    ps[i, j + 1] = int.Parse(mc[j].Value);
                 }
             }
 
