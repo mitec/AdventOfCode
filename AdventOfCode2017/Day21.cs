@@ -18,8 +18,6 @@ namespace AdventOfCode2017
             var transformIn = new List<char[,]>();
             var transformOut = new List<char[,]>();
 
-            string s = "";
-            
             foreach (var line in File.ReadLines(filePath))
             {
                 string[] inOut = line.Split(new string[] {" => "}, StringSplitOptions.None);
@@ -27,32 +25,67 @@ namespace AdventOfCode2017
                 var inSquare = SquareFromString(inOut[0]);
                 var outSquare = SquareFromString(inOut[1]);
 
-//                transformIn.Add(inSquare);
-//                transformOut.Add(outSquare);
+                transformIn.Add(inSquare);
+                transformOut.Add(outSquare);
+
+                int fromIndexToCheck = transformIn.Count - 1;
                 
-//                s += inOut[0] + "|org\n";
-//                
-                for (int i = 0; i < 4; i++)
+                char[,] squareVariant;
+
+                for (int i = 1; i <= 3; i++)
                 {
-                    transformIn.Add(RotateSquareBy90(inSquare, i));
-                    transformOut.Add(outSquare);
-                    
-//                    s += SquareToString(RotateSquareBy90(inSquare, i)) + $"rot:{i}\n";
+                    squareVariant = RotateSquareBy90(inSquare, i);
+
+                    if (!SquareVariantExists(squareVariant, transformIn, fromIndexToCheck))
+                    {
+                        transformIn.Add(squareVariant);
+                        transformOut.Add(outSquare);
+                    }
                 }
-//
-                transformIn.Add(FlipSquareHorizontaly(inSquare));
-                transformOut.Add(outSquare);
-//                
-//                s += SquareToString(FlipSquareHorizontaly(inSquare)) + "flipH\n";
-//
-                transformIn.Add(FlipSquareVerticaly(inSquare));
-                transformOut.Add(outSquare);
-//                
-//                s += SquareToString(FlipSquareVerticaly(inSquare)) + "flipV\n";
+
+                squareVariant = FlipSquareHorizontaly(inSquare);
+
+                if (!SquareVariantExists(squareVariant, transformIn, fromIndexToCheck))
+                {
+                    transformIn.Add(squareVariant);
+                    transformOut.Add(outSquare);
+                }
+
+                var inSquareVariant = squareVariant;
+                
+                for (int i = 1; i <= 3; i++)
+                {
+                    squareVariant = RotateSquareBy90(inSquareVariant, i);
+
+                    if (!SquareVariantExists(squareVariant, transformIn, fromIndexToCheck))
+                    {
+                        transformIn.Add(squareVariant);
+                        transformOut.Add(outSquare);
+                    }
+                }
+                
+                squareVariant = FlipSquareVerticaly(inSquare);
+
+                if (!SquareVariantExists(squareVariant, transformIn, fromIndexToCheck))
+                {
+                    transformIn.Add(squareVariant);
+                    transformOut.Add(outSquare);
+                }
+                
+                inSquareVariant = squareVariant;
+                
+                for (int i = 1; i <= 3; i++)
+                {
+                    squareVariant = RotateSquareBy90(inSquareVariant, i);
+
+                    if (!SquareVariantExists(squareVariant, transformIn, fromIndexToCheck))
+                    {
+                        transformIn.Add(squareVariant);
+                        transformOut.Add(outSquare);
+                    }
+                }
             }
-            
-//            File.WriteAllText("../../data/d21_out.txt", s);
-            
+
             int len;
 
             for (int i = 0; i < itr; i++)
@@ -109,6 +142,19 @@ namespace AdventOfCode2017
             return s;
         }
 
+        private static bool SquareVariantExists(char[,] s, List<char[,]> inS, int startPos)
+        {
+            for (int i = startPos; i < inS.Count; i++)
+            {
+                if (AreSquaresIdentical(s, inS[i]))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         private static char[,] TransformSquare(char[,] s, int div, List<char[,]> inS, List<char[,]> outS)
         {
             int len = s.GetLength(0);
@@ -122,30 +168,15 @@ namespace AdventOfCode2017
             {
                 for (int j = 0; j < r; j++)
                 {
-                    var vars = new List<char[,]>();
-                    
                     var subSquare = CopySubSquare(s, div, i * div, j * div);
-                    vars.Add(subSquare);
-                    vars.Add(RotateSquareBy90(vars[vars.Count - 1]));
-                    vars.Add(RotateSquareBy90(vars[vars.Count - 1]));
-                    vars.Add(RotateSquareBy90(vars[vars.Count - 1]));
 
-                    vars.Add(FlipSquareHorizontaly(subSquare));
-                    vars.Add(FlipSquareVerticaly(subSquare));
-
-                    foreach (var v in vars)
+                    for (int k = 0; k < inS.Count; k++)
                     {
-                        bool found = false;
-                        for (int k = 0; k < inS.Count; k++)
+                        if (AreSquaresIdentical(inS[k], subSquare))
                         {
-                            if (AreSquaresIdentical(inS[k], v))
-                            {
-                                FillSubSquare(retS, outS[k], i * nDiv, j * nDiv);
-                                found = true;
-                                break;
-                            }
+                            FillSubSquare(retS, outS[k], i * nDiv, j * nDiv);
+                            break;
                         }
-                        if (found) break;
                     }
                 }
             }
@@ -166,7 +197,7 @@ namespace AdventOfCode2017
         {
             int len = s.GetLength(0);
             int li = len - 1;
-            
+
             var retS = new char[len, len];
 
             for (int i = 0; i <= li; i++)
@@ -184,7 +215,7 @@ namespace AdventOfCode2017
         {
             int len = s.GetLength(0);
             int li = len - 1;
-            
+
             var retS = new char[len, len];
 
             for (int i = 0; i <= li; i++)
@@ -202,7 +233,7 @@ namespace AdventOfCode2017
         {
             int len = s.GetLength(0);
             int li = len - 1;
-            
+
             var retS = new char[len, len];
 
             for (int i = 0; i <= li; i++)
@@ -280,16 +311,16 @@ namespace AdventOfCode2017
         private static string SquareToString(char[,] s)
         {
             string ret = "";
-            
+
             int len = s.GetLength(0);
-            
+
             for (int i = 0; i < len; i++)
             {
                 for (int j = 0; j < len; j++)
                 {
                     ret += s[i, j];
                 }
-                
+
                 if (i < len - 1) ret += '/';
             }
 
