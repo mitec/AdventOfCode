@@ -31,11 +31,11 @@ namespace AdventOfCode2017
 
             int d = 'u';
             int c = 0;
-            
+
             for (int i = 0; i < 10000; i++)
             {
                 bool isInfected;
-                
+
                 if (grid[pY, pX] == '#')
                 {
                     isInfected = true;
@@ -69,7 +69,7 @@ namespace AdventOfCode2017
                     pY += (d == 'b' ? 1 : -1);
                 }
             }
-            
+
             sw.Stop();
 
             Console.WriteLine($"Infected became {c} in {sw.ElapsedMilliseconds}");
@@ -81,7 +81,7 @@ namespace AdventOfCode2017
 
             sw.Start();
 
-            int len = 10001;
+            int len = 1001;
             var grid = new char[len, len];
 
             string[] input = File.ReadAllLines(filePath);
@@ -101,13 +101,13 @@ namespace AdventOfCode2017
             int oX = 0;
             int oY = -1;
             int c = 0;
-            
+
             for (int i = 0; i < 10000000; i++)
             {
                 if (grid[pY, pX] == '#')
                 {
                     grid[pY, pX] = 'f';
-                    
+
                     if (oX != 0)
                     {
                         oY = oX;
@@ -134,7 +134,7 @@ namespace AdventOfCode2017
                 else
                 {
                     grid[pY, pX] = 'w';
-                    
+
                     if (oX != 0)
                     {
                         oY = -oX;
@@ -146,13 +146,14 @@ namespace AdventOfCode2017
                         oY = 0;
                     }
                 }
-                
+
                 pX += oX;
                 pY += oY;
             }
-            
+
             sw.Stop();
 
-            Console.WriteLine($"Infected became {c} in {sw.ElapsedMilliseconds}");        }
+            Console.WriteLine($"Infected became {c} in {sw.ElapsedMilliseconds}");
+        }
     }
 }
