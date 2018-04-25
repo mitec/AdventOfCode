@@ -98,10 +98,13 @@ namespace AdventOfCode2017
 //                Day21.Solve1Half(5, "../../data/d21.txt");
 //                Day21.Solve2Half(18, "../../data/d21.txt");
                 
-                Day22.Solve1Half("../../data/d22_test.txt");
-                Day22.Solve1Half("../../data/d22.txt");
-                Day22.Solve2Half("../../data/d22_test.txt");
-                Day22.Solve2Half("../../data/d22.txt");
+//                Day22.Solve1Half("../../data/d22_test.txt");
+//                Day22.Solve1Half("../../data/d22.txt");
+//                Day22.Solve2Half("../../data/d22_test.txt");
+//                Day22.Solve2Half("../../data/d22.txt");
+                
+                Day23.Solve1Half("../../data/d23.txt");
+                Day23.Solve2Half("../../data/d23_optimized.txt");
             }
             catch (Exception e)
             {
