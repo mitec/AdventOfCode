@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace AdventOfCode2017
 {
@@ -7,6 +8,10 @@ namespace AdventOfCode2017
     {
         internal static void Solve1Half(int[] input)
         {
+            var sw = new Stopwatch();
+
+            sw.Start();
+            
             string orgInput = string.Join(", ", input);
             
             int cycleCount = 0;
@@ -46,12 +51,24 @@ namespace AdventOfCode2017
             }
             
             Console.WriteLine($"Num of cycles for input {orgInput} is {cycleCount}");
+            
+            sw.Stop();
+            
+            Console.WriteLine($"Finished in {sw.ElapsedMilliseconds}");
         }
         
         internal static void Solve2Half(int[] input)
         {
+            var sw = new Stopwatch();
+
+            sw.Start();
+            
             Solve1Half(input);
             Solve1Half(input);
+            
+            sw.Stop();
+            
+            Console.WriteLine($"Finished in {sw.ElapsedMilliseconds}");
         }
     }
 }

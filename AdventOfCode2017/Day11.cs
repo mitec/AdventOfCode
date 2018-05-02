@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 
 namespace AdventOfCode2017
@@ -74,6 +75,10 @@ namespace AdventOfCode2017
 
         internal static void Solve1Half(string filePath)
         {
+            var sw = new Stopwatch();
+
+            sw.Start();
+            
             var d = new Direction();
 
             foreach (var input in File.ReadLines(filePath))
@@ -87,6 +92,10 @@ namespace AdventOfCode2017
             }
 
             Console.WriteLine($"Shortest path '{d.Normalize().Size}'");
+            
+            sw.Stop();
+            
+            Console.WriteLine($"Finished in {sw.ElapsedMilliseconds}");
 
 //            var directionCounts = new Dictionary<string, int>
 //            {
@@ -119,6 +128,10 @@ namespace AdventOfCode2017
 
         internal static void Solve2Half(string filePath)
         {
+            var sw = new Stopwatch();
+
+            sw.Start();
+            
             var d = new Direction();
             var maxD = new Direction();
 
@@ -136,6 +149,10 @@ namespace AdventOfCode2017
             }
 
             Console.WriteLine($"Max distance {maxD.Size}");
+            
+            sw.Stop();
+            
+            Console.WriteLine($"Finished in {sw.ElapsedMilliseconds}");
         }
     }
 }

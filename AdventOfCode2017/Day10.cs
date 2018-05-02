@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
@@ -8,6 +9,10 @@ namespace AdventOfCode2017
     {
         internal static void Solve1Half(int sequenceLength, string input)
         {
+            var sw = new Stopwatch();
+
+            sw.Start();
+            
             int result = 0;
 
             var sequence = new int[sequenceLength];
@@ -48,10 +53,18 @@ namespace AdventOfCode2017
             }
             
             Console.WriteLine($"Multiply result is '{result}'");
+            
+            sw.Stop();
+            
+            Console.WriteLine($"Finished in {sw.ElapsedMilliseconds}");
         }
 
         internal static void Solve2Half(int sequenceLength, string input)
         {
+            var sw = new Stopwatch();
+
+            sw.Start();
+            
             var sequence = new byte[sequenceLength];
             for (var i = 0; i < sequenceLength; i++) sequence[i] = (byte)i;
 
@@ -111,6 +124,10 @@ namespace AdventOfCode2017
             string hash = BitConverter.ToString(sparseHash).Replace("-", "").ToLower();
             
             Console.WriteLine($"Dense hash: '{hash}'");
+            
+            sw.Stop();
+            
+            Console.WriteLine($"Finished in {sw.ElapsedMilliseconds}");
         }
     }
 }

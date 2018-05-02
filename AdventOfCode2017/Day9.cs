@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 
 namespace AdventOfCode2017
@@ -7,6 +8,10 @@ namespace AdventOfCode2017
     {
         internal static void Solve1Half(string filePath)
         {
+            var sw = new Stopwatch();
+
+            sw.Start();
+            
             int groupScore = 0;
 
             char[] data = File.ReadAllText(filePath).ToCharArray();
@@ -52,10 +57,18 @@ namespace AdventOfCode2017
             }
 
             Console.WriteLine($"Group score is: '{groupScore}'");
+            
+            sw.Stop();
+            
+            Console.WriteLine($"Finished in {sw.ElapsedMilliseconds}");
         }
 
         internal static void Solve2Half(string filePath)
         {
+            var sw = new Stopwatch();
+
+            sw.Start();
+            
             int charCount = 0;
 
             char[] data = File.ReadAllText(filePath).ToCharArray();
@@ -93,6 +106,10 @@ namespace AdventOfCode2017
             }
 
             Console.WriteLine($"Char count in garbage: '{charCount}'");
+            
+            sw.Stop();
+            
+            Console.WriteLine($"Finished in {sw.ElapsedMilliseconds}");
         }
     }
 }

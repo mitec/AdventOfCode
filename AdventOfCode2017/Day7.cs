@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -52,6 +53,10 @@ namespace AdventOfCode2017
         
         internal static void Solve1Half(string filePath)
         {
+            var sw = new Stopwatch();
+
+            sw.Start();
+            
             var roots = new HashSet<string>();
             var children = new HashSet<string>();
             
@@ -81,10 +86,18 @@ namespace AdventOfCode2017
             }
             
             Console.WriteLine($"Root program name is '{bottomRoot}'");
+            
+            sw.Stop();
+            
+            Console.WriteLine($"Finished in {sw.ElapsedMilliseconds}");
         }
 
         internal static void Solve2Half(string filePath)
         {
+            var sw = new Stopwatch();
+
+            sw.Start();
+            
             var nameToNodeMap = new Dictionary<string, Node>();
             
             foreach (string line in File.ReadLines(filePath))
@@ -143,6 +156,10 @@ namespace AdventOfCode2017
             }
             
             //Console.WriteLine($"Correct weight '{correctWeight}'");
+            
+            sw.Stop();
+            
+            Console.WriteLine($"Finished in {sw.ElapsedMilliseconds}");
         }
     }
 }

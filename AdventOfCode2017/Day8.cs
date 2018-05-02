@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -10,6 +11,10 @@ namespace AdventOfCode2017
     {
         internal static void Solve1Half(string filePath)
         {
+            var sw = new Stopwatch();
+
+            sw.Start();
+            
             int maxValue = 0;
             var vars = new Dictionary<string, int>();
 
@@ -63,10 +68,18 @@ namespace AdventOfCode2017
             }
             
             Console.WriteLine($"Max registry value is '{maxValue}'");
+            
+            sw.Stop();
+            
+            Console.WriteLine($"Finished in {sw.ElapsedMilliseconds}");
         }
 
         internal static void Solve2Half(string filePath)
         {
+            var sw = new Stopwatch();
+
+            sw.Start();
+            
             int highstValue = 0;
             var vars = new Dictionary<string, int>();
 
@@ -124,6 +137,10 @@ namespace AdventOfCode2017
             }
             
             Console.WriteLine($"Highst value in registry was '{highstValue}'");
+            
+            sw.Stop();
+            
+            Console.WriteLine($"Finished in {sw.ElapsedMilliseconds}");
         }
     }
 }

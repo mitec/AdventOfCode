@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
@@ -9,6 +10,10 @@ namespace AdventOfCode2017
     {
         internal static void Solve1Half(string filePath)
         {
+            var sw = new Stopwatch();
+
+            sw.Start();
+            
             int validPhrasesCount = 0;
             
             foreach (var phrases in ParseInput(filePath))
@@ -29,10 +34,18 @@ namespace AdventOfCode2017
             }
             
             PrintResult(validPhrasesCount);
+            
+            sw.Stop();
+            
+            Console.WriteLine($"Finished in {sw.ElapsedMilliseconds}");
         }
         
         internal static void Solve2Half(string filePath)
         {
+            var sw = new Stopwatch();
+
+            sw.Start();
+            
             int validPhrasesCount = 0;
 
             string[][] phrasesAll = ParseInput(filePath).ToArray();
@@ -64,6 +77,10 @@ namespace AdventOfCode2017
             }
             
             PrintResult(validPhrasesCount);
+            
+            sw.Stop();
+            
+            Console.WriteLine($"Finished in {sw.ElapsedMilliseconds}");
         }
 
         private static IEnumerable<String[]> ParseInput(string filePath)

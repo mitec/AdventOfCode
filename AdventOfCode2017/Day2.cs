@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
@@ -9,6 +10,10 @@ namespace AdventOfCode2017
     {
         internal static void Solve1Half(string filePath)
         {
+            var sw = new Stopwatch();
+
+            sw.Start();
+            
             int checksum = 0;
             foreach (var row in ParseInput(filePath))
             {
@@ -16,10 +21,18 @@ namespace AdventOfCode2017
             }
             
             PrintResult(checksum);
+            
+            sw.Stop();
+            
+            Console.WriteLine($"Finished in {sw.ElapsedMilliseconds}");
         }
         
         internal static void Solve2Half(string filePath)
         {
+            var sw = new Stopwatch();
+
+            sw.Start();
+            
             int checksum = 0;
             foreach (var row in ParseInput(filePath))
             {
@@ -41,6 +54,10 @@ namespace AdventOfCode2017
             }
             
             PrintResult(checksum);
+            
+            sw.Stop();
+            
+            Console.WriteLine($"Finished in {sw.ElapsedMilliseconds}");
         }
 
         private static IEnumerable<int[]> ParseInput(string filePath)

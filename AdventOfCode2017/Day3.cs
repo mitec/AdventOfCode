@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace AdventOfCode2017
 {
@@ -6,6 +7,10 @@ namespace AdventOfCode2017
     {
         internal static void Solve1Half(int input)
         {
+            var sw = new Stopwatch();
+
+            sw.Start();
+            
             int[,] grid = GenerateGrid2(input);
 
             //PrintGrid(grid);
@@ -19,10 +24,18 @@ namespace AdventOfCode2017
             int dist = ComputeDist(x1, y1, xInput, yInput);
             
             Console.WriteLine($"Distance from 1 to {input} is {dist}");
+            
+            sw.Stop();
+            
+            Console.WriteLine($"Finished in {sw.ElapsedMilliseconds}");
         }
         
         internal static void Solve2Half(int input)
         {
+            var sw = new Stopwatch();
+
+            sw.Start();
+            
             int[,] grid = GenerateGrid2(input);
 
             //PrintGrid(grid);
@@ -30,6 +43,10 @@ namespace AdventOfCode2017
             int largerNum = GetMaxValue(grid);
             
             Console.WriteLine($"1. larger num then {input} is {largerNum}");
+            
+            sw.Stop();
+            
+            Console.WriteLine($"Finished in {sw.ElapsedMilliseconds}");
         }
 
         private static int[,] GenerateGrid(int input)
